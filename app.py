@@ -3,7 +3,7 @@ from flask_cors import CORS
 import random
 import wikipedia
 import re
-# from nltk.tokenize import sent_tokenize
+from nltk.tokenize import sent_tokenize
 
 nicknames = ["dude","guy","bob","thanos","idiot","boi","stupid"]
 
