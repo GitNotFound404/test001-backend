@@ -39,9 +39,10 @@ def get_random_nickname():
         "nickname": random.choice(nicknames)
     })
 
-@app.route("/api/get-sentences-on-random-topic")
-def get_random_topic_sentences():
-    value = get_all_sentences("monkey")
+@app.route("/api/get-sentences-on-random-topic/<custom_topic>")
+def get_random_topic_sentences(custom_topic):
+    custom_topic = custom_topic or "fire"
+    value = get_all_sentences(custom_topic)
     print(value)
     return jsonify(value)
 
