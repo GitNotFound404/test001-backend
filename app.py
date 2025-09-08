@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 import random
 import wikipedia
@@ -39,9 +39,9 @@ def get_random_nickname():
         "nickname": random.choice(nicknames)
     })
 
-@app.route("/api/get-sentences-on-random-topic/<custom_topic>")
-def get_random_topic_sentences(custom_topic):
-    custom_topic = custom_topic or "fire"
+@app.route("/api/get-sentences-on-random-topic/")
+def get_random_topic_sentences():
+    custom_topic = request.args.get('topic', default='minecraft')
     value = get_all_sentences(custom_topic)
     print(value)
     return jsonify(value)
