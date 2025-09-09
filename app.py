@@ -41,9 +41,20 @@ def get_random_nickname():
 
 @app.route("/api/get-sentences-on-random-topic/")
 def get_random_topic_sentences():
-    custom_topic = request.args.get('topic', default='minecraft')
-    value = get_all_sentences(custom_topic)
-    print(value)
+    with open('topics.txt', 'r') as topics_txt:
+        topics_txt = topics_txt.read()
+    
+    topics_list = topics_txt.split('\n')
+
+    value = [None, None, "sentence"]
+    while (not value[0]):
+        if (value[2]): print("No suitable sentence found, retrying...")
+        random_topic = topics_list[random.randint(0, len(topics_list)-1)].title()
+        print("Topic:", random_topic)
+        custom_topic = request.args.get('topic', default=random_topic)
+        del(topics_txt, topics_list, random_topic)
+        value = get_all_sentences(custom_topic)
+        print(value)
     return jsonify(value)
 
 # Make sure you have downloaded the NLTK 'punkt' tokenizer:
@@ -196,7 +207,7 @@ def get_all_sentences(topic):
 
         if easy_sentences:
             print("4. Done, returning sentences")
-            return [easy_sentences, None]
+            return [easy_sentences, None, topic]
         else:
             return None, "Could not find suitable sentences on this topic. Try another."
 

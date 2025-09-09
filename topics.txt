@@ -1,5 +1,4 @@
 dog
-cat
 horse
 lion
 monkey
@@ -34,7 +33,6 @@ stomach
 rain
 wind
 cloud
-snow
 thunder
 planet
 star
@@ -106,6 +104,9 @@ Jacksepticeye
 brainrot
 brainrot terms
 gen-z
+funny
+games
+speedrun
 Pac-Man
 Tetris
 Pong
