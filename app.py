@@ -99,9 +99,9 @@ def get_all_sentences(topic):
                     print("3.6. Looping through sentences with checks")
                     sentence = sentence.strip()
 
-                    if (profanity.contains_profanity(sentence)):
-                        print("Profanity detected, skipping to next sentence.")
-                        continue
+                    #if (profanity.contains_profanity(sentence)):
+                    #    print("Profanity detected, skipping to next sentence.")
+                    #    continue
 
                     # Rule for Numbers: Allow a single 4-digit number (like a year), but no others.
                     numbers = re.findall(r'\d+', sentence)
@@ -221,5 +221,5 @@ def get_all_sentences(topic):
         return None, f"An unexpected error occurred: {e}"
 
 
-if (__name__ == "__main__"):
-    app.run(host="0.0.0.0", port=10000) # For testing purposes, remove this in final build and instead use gunicorn.
+"""if (__name__ == "__main__"):
+    app.run(host="0.0.0.0", port=10000)""" # For testing purposes, remove this in final build and instead use gunicorn.
