@@ -4,6 +4,9 @@ import random
 import wikipedia
 import re
 from nltk.tokenize import sent_tokenize
+from better_profanity import profanity
+
+profanity.load_censor_words()
 
 import nltk
 import os
@@ -95,6 +98,10 @@ def get_all_sentences(topic):
                 for sentence in sentences:
                     print("3.6. Looping through sentences with checks")
                     sentence = sentence.strip()
+
+                    if (profanity.contains_profanity(sentence)):
+                        print("Profanity detected, skipping to next sentence.")
+                        continue
 
                     # Rule for Numbers: Allow a single 4-digit number (like a year), but no others.
                     numbers = re.findall(r'\d+', sentence)
@@ -206,7 +213,7 @@ def get_all_sentences(topic):
 
         if easy_sentences:
             print("4. Done, returning sentences")
-            return [easy_sentences, None, topic]
+            return [easy_sentences, None, page_title] #Page title instead of topic.
         else:
             return None, "Could not find suitable sentences on this topic. Try another."
 
@@ -215,4 +222,4 @@ def get_all_sentences(topic):
 
 
 if (__name__ == "__main__"):
-    app.run(host="0.0.0.0", port=10000)
+    app.run(host="0.0.0.0", port=10000) # For testing purposes, remove this in final build and instead use gunicorn.
