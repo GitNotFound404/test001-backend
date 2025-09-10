@@ -48,7 +48,6 @@ def get_random_topic_sentences():
 
     value = [None, None, "sentence"]
     while (not value[0]):
-        if (value[2]): print("No suitable sentence found, retrying...")
         random_topic = topics_list[random.randint(0, len(topics_list)-1)].title()
         print("Topic:", random_topic)
         custom_topic = request.args.get('topic', default=random_topic)
