@@ -20,5 +20,5 @@ def get_sentences_list():
 
 
 # Run app (Debug purposes. Use Gunicorn in final build.)
-if (__name__ == "__main__"):
-    app.run(host="0.0.0.0", port=10000, debug=True)
+# if (__name__ == "__main__"):
+#    app.run(host="0.0.0.0", port=10000, debug=True)
